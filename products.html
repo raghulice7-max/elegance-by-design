@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Collections – Elegance by Design</title>
+  <meta name="description" content="Browse our exclusive fashion collections – sarees, lehengas, kurtis, dresses and blazers crafted by our designer."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/products.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-icon">✦</span>
+      Elegance<span class="logo-accent">by Design</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link active">Collections</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn" id="cartBtn">🛒 <span class="cart-count" id="cartCount">0</span></a>
+      <a href="login.html" class="btn-login" id="loginNavBtn">Login</a>
+      <button class="nav-toggle" id="navToggle">☰</button>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <p class="section-tag">✦ Browse All Designs</p>
+    <h1 class="page-title">Our Collections</h1>
+    <p class="page-sub">Handcrafted pieces for every occasion — festival, wedding, casual and corporate</p>
+  </div>
+</div>
+
+<!-- FILTER + PRODUCTS -->
+<section class="products-section">
+  <div class="container">
+    <div class="filter-bar">
+      <div class="filter-group">
+        <span class="filter-label">Filter by:</span>
+        <button class="filter-btn active" data-filter="all" onclick="filterProducts('all')">All</button>
+        <button class="filter-btn" data-filter="saree" onclick="filterProducts('saree')">Sarees</button>
+        <button class="filter-btn" data-filter="lehenga" onclick="filterProducts('lehenga')">Lehengas</button>
+        <button class="filter-btn" data-filter="kurti" onclick="filterProducts('kurti')">Kurtis</button>
+        <button class="filter-btn" data-filter="dress" onclick="filterProducts('dress')">Dresses</button>
+        <button class="filter-btn" data-filter="blazer" onclick="filterProducts('blazer')">Blazers</button>
+      </div>
+      <div class="sort-group">
+        <label for="sortSelect">Sort:</label>
+        <select id="sortSelect" onchange="sortProducts(this.value)">
+          <option value="default">Default</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="name">Name A–Z</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="results-count" id="resultsCount">Showing all products</div>
+
+    <div class="products-grid" id="productsGrid">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="product-modal" id="productModal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-content" id="modalContent">
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; padding: 2rem 0 1rem;">
+      <p>© 2026 Elegance by Design. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/products.js"></script>
+</body>
+</html>

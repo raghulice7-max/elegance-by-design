@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us – Elegance by Design</title>
+  <meta name="description" content="Get in touch with Elegance by Design for custom orders, queries and fashion consultations."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/contact.css"/>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-icon">✦</span>
+      Elegance<span class="logo-accent">by Design</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Collections</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link active">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn" id="cartBtn">🛒 <span class="cart-count" id="cartCount">0</span></a>
+      <a href="login.html" class="btn-login" id="loginNavBtn">Login</a>
+      <button class="nav-toggle" id="navToggle">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="container">
+    <p class="section-tag">✦ We'd Love to Hear from You</p>
+    <h1 class="page-title">Contact Us</h1>
+    <p class="page-sub">For custom orders, queries or just to say hello!</p>
+  </div>
+</div>
+
+<section class="contact-section section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p>Have a question about a product, want a custom design, or need help with your order? We're here for you.</p>
+
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="contact-card-icon">📍</div>
+            <div>
+              <strong>Our Studio</strong>
+              <span>Tamil Nadu, India</span>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">📞</div>
+            <div>
+              <strong>Phone / WhatsApp</strong>
+              <span>+91 98765 43210</span>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">✉️</div>
+            <div>
+              <strong>Email</strong>
+              <span>hello@elegancebydesign.in</span>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card-icon">⏰</div>
+            <div>
+              <strong>Working Hours</strong>
+              <span>Mon – Sat: 9 AM – 7 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-social">
+          <h4>Follow Us</h4>
+          <div class="social-row">
+            <a href="#" class="social-chip">📷 Instagram</a>
+            <a href="#" class="social-chip">📘 Facebook</a>
+            <a href="#" class="social-chip">▶️ YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrap">
+        <form class="contact-form" id="contactForm" onsubmit="sendMessage(event)">
+          <h3>Send Us a Message</h3>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="contactName">Your Name</label>
+              <input type="text" id="contactName" placeholder="Priya Sharma" required/>
+            </div>
+            <div class="form-group">
+              <label for="contactPhone">Phone Number</label>
+              <input type="tel" id="contactPhone" placeholder="+91 98765 43210"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contactEmail">Email Address</label>
+            <input type="email" id="contactEmail" placeholder="your@email.com" required/>
+          </div>
+          <div class="form-group">
+            <label for="contactSubject">Subject</label>
+            <select id="contactSubject" required>
+              <option value="">Select a topic</option>
+              <option>Custom Order Enquiry</option>
+              <option>Order Status / Tracking</option>
+              <option>Returns & Exchanges</option>
+              <option>Product Information</option>
+              <option>General Question</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contactMessage">Your Message</label>
+            <textarea id="contactMessage" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+          </div>
+          <div class="form-success" id="contactSuccess" style="display:none;">
+            ✅ Thank you! Your message has been sent. We'll respond within 24 hours.
+          </div>
+          <button type="submit" class="btn-auth">Send Message →</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; padding: 2rem 0 1rem;">
+      <p>© 2026 Elegance by Design. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/nav.js"></script>
+<script>
+function sendMessage(e) {
+  e.preventDefault();
+  document.getElementById('contactSuccess').style.display = 'block';
+  document.getElementById('contactForm').reset();
+  setTimeout(() => document.getElementById('contactSuccess').style.display = 'none', 5000);
+}
+</script>
+</body>
+</html>

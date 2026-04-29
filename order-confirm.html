@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Confirmed – Elegance by Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/confirm.css"/>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-icon">✦</span>
+      Elegance<span class="logo-accent">by Design</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Collections</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn" id="cartBtn">🛒 <span class="cart-count" id="cartCount">0</span></a>
+      <a href="login.html" class="btn-login" id="loginNavBtn">Login</a>
+      <button class="nav-toggle" id="navToggle">☰</button>
+    </div>
+  </div>
+</nav>
+
+<section class="confirm-section">
+  <div class="confirm-card">
+    <div class="confirm-animation">
+      <div class="checkmark-circle">
+        <svg viewBox="0 0 52 52" class="checkmark-svg">
+          <circle class="checkmark-circle-anim" cx="26" cy="26" r="25" fill="none"/>
+          <path class="checkmark-tick" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+      </div>
+    </div>
+
+    <h1 class="confirm-title">Order Placed Successfully!</h1>
+    <p class="confirm-sub">Thank you for shopping with us! Your order has been received and is being processed.</p>
+
+    <div class="order-id-box">
+      Order ID: <strong id="orderId">#EBD-000000</strong>
+    </div>
+
+    <div class="confirm-details" id="confirmDetails">
+      <!-- Injected by JS -->
+    </div>
+
+    <div class="confirm-timeline">
+      <h3>What happens next?</h3>
+      <div class="timeline">
+        <div class="timeline-step done">
+          <div class="tl-dot">✓</div>
+          <div class="tl-info">
+            <strong>Order Confirmed</strong>
+            <span>We've received your order</span>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="tl-dot">2</div>
+          <div class="tl-info">
+            <strong>Processing</strong>
+            <span>Your items are being prepared</span>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="tl-dot">3</div>
+          <div class="tl-info">
+            <strong>Shipped</strong>
+            <span>Your order is on the way</span>
+          </div>
+        </div>
+        <div class="timeline-step">
+          <div class="tl-dot">4</div>
+          <div class="tl-info">
+            <strong>Delivered</strong>
+            <span>Enjoy your new outfit!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="confirm-actions">
+      <a href="products.html" class="btn-primary">Continue Shopping</a>
+      <a href="index.html" class="btn-secondary">Back to Home</a>
+    </div>
+
+    <p class="confirm-email-note">📧 A confirmation email has been sent to your email address.</p>
+  </div>
+</section>
+
+<script src="js/data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/confirm.js"></script>
+</body>
+</html>

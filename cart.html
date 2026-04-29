@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Cart – Elegance by Design</title>
+  <meta name="description" content="View and manage your shopping cart – Elegance by Design fashion store."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/cart.css"/>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-icon">✦</span>
+      Elegance<span class="logo-accent">by Design</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Collections</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="cart.html" class="cart-btn active" id="cartBtn">🛒 <span class="cart-count" id="cartCount">0</span></a>
+      <a href="login.html" class="btn-login" id="loginNavBtn">Login</a>
+      <button class="nav-toggle" id="navToggle">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="container">
+    <p class="section-tag">✦ Review Your Selection</p>
+    <h1 class="page-title">Shopping Cart</h1>
+  </div>
+</div>
+
+<section class="cart-section">
+  <div class="container">
+
+    <!-- EMPTY CART -->
+    <div class="empty-cart" id="emptyCart" style="display:none;">
+      <div class="empty-icon">🛍️</div>
+      <h2>Your cart is empty</h2>
+      <p>Looks like you haven't added any items yet. Explore our beautiful collections!</p>
+      <a href="products.html" class="btn-primary">Browse Collections</a>
+    </div>
+
+    <!-- CART WITH ITEMS -->
+    <div class="cart-layout" id="cartLayout">
+      <!-- Cart Items -->
+      <div class="cart-items-wrap">
+        <div class="cart-items-header">
+          <h2>Cart Items (<span id="itemCount">0</span>)</h2>
+          <button class="clear-cart-btn" onclick="clearCart()">Clear All</button>
+        </div>
+        <div id="cartItemsList">
+          <!-- Items injected by JS -->
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="cart-summary">
+        <h3 class="summary-title">Order Summary</h3>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="subtotalAmt">₹0</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span id="shippingAmt">₹0</span>
+        </div>
+        <div class="summary-row discount-row" id="discountRow" style="display:none;">
+          <span>Discount</span>
+          <span id="discountAmt" class="discount-green">-₹0</span>
+        </div>
+        <div class="summary-divider"></div>
+        <div class="summary-row total-row">
+          <span>Total</span>
+          <span id="totalAmt">₹0</span>
+        </div>
+
+        <!-- Coupon -->
+        <div class="coupon-section">
+          <p class="coupon-label">Have a coupon?</p>
+          <div class="coupon-input">
+            <input type="text" id="couponCode" placeholder="Enter code (e.g. STYLE10)"/>
+            <button onclick="applyCoupon()" class="coupon-btn">Apply</button>
+          </div>
+          <p class="coupon-hint" id="couponMsg"></p>
+        </div>
+
+        <button class="btn-checkout" onclick="proceedCheckout()">Proceed to Checkout →</button>
+        <a href="products.html" class="btn-continue">← Continue Shopping</a>
+
+        <div class="secure-badge">🔒 Secure & Encrypted Checkout</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutOverlay">
+  <div class="checkout-modal" id="checkoutModal">
+    <button class="modal-close" onclick="closeCheckout()">✕</button>
+    <h2 class="checkout-title">Complete Your Order</h2>
+
+    <div class="checkout-steps">
+      <div class="step active" id="step1Indicator">1. Delivery</div>
+      <div class="step-arrow">→</div>
+      <div class="step" id="step2Indicator">2. Payment</div>
+      <div class="step-arrow">→</div>
+      <div class="step" id="step3Indicator">3. Confirm</div>
+    </div>
+
+    <!-- Step 1: Delivery Info -->
+    <div class="checkout-step" id="step1">
+      <h3>Delivery Details</h3>
+      <form id="deliveryForm">
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="delFirstName" placeholder="Priya" required/>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="delLastName" placeholder="Sharma" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="delEmail" placeholder="your@email.com" required/>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="delPhone" placeholder="+91 98765 43210" required/>
+        </div>
+        <div class="form-group">
+          <label>Address Line 1</label>
+          <input type="text" id="delAddr1" placeholder="House No / Flat / Street" required/>
+        </div>
+        <div class="form-group">
+          <label>Address Line 2</label>
+          <input type="text" id="delAddr2" placeholder="Area / Landmark (optional)"/>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" id="delCity" placeholder="Chennai" required/>
+          </div>
+          <div class="form-group">
+            <label>Pincode</label>
+            <input type="text" id="delPin" placeholder="600001" maxlength="6" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>State</label>
+          <select id="delState" required>
+            <option value="">Select State</option>
+            <option>Tamil Nadu</option>
+            <option>Kerala</option>
+            <option>Karnataka</option>
+            <option>Andhra Pradesh</option>
+            <option>Telangana</option>
+            <option>Maharashtra</option>
+            <option>Delhi</option>
+            <option>Rajasthan</option>
+            <option>West Bengal</option>
+            <option>Gujarat</option>
+          </select>
+        </div>
+        <button type="button" class="btn-auth" onclick="nextStep(2)">Continue to Payment →</button>
+      </form>
+    </div>
+
+    <!-- Step 2: Payment -->
+    <div class="checkout-step hidden" id="step2">
+      <h3>Payment Method</h3>
+      <div class="payment-options">
+        <label class="pay-option">
+          <input type="radio" name="payMethod" value="upi" checked/>
+          <div class="pay-card">
+            <span class="pay-icon">📱</span>
+            <div>
+              <strong>UPI</strong>
+              <small>Google Pay, PhonePe, Paytm</small>
+            </div>
+          </div>
+        </label>
+        <label class="pay-option">
+          <input type="radio" name="payMethod" value="card"/>
+          <div class="pay-card">
+            <span class="pay-icon">💳</span>
+            <div>
+              <strong>Credit / Debit Card</strong>
+              <small>Visa, Mastercard, Rupay</small>
+            </div>
+          </div>
+        </label>
+        <label class="pay-option">
+          <input type="radio" name="payMethod" value="netbanking"/>
+          <div class="pay-card">
+            <span class="pay-icon">🏦</span>
+            <div>
+              <strong>Net Banking</strong>
+              <small>All major banks</small>
+            </div>
+          </div>
+        </label>
+        <label class="pay-option">
+          <input type="radio" name="payMethod" value="cod"/>
+          <div class="pay-card">
+            <span class="pay-icon">💵</span>
+            <div>
+              <strong>Cash on Delivery</strong>
+              <small>Pay when you receive</small>
+            </div>
+          </div>
+        </label>
+      </div>
+
+      <div class="pay-upi-section" id="upiSection">
+        <div class="form-group">
+          <label>Enter UPI ID</label>
+          <input type="text" id="upiId" placeholder="yourname@upi"/>
+        </div>
+      </div>
+
+      <div class="order-mini-summary">
+        <div class="summary-row"><span>Total Payable</span><strong id="checkoutTotal">₹0</strong></div>
+      </div>
+
+      <div class="step-btns">
+        <button class="btn-secondary-sm" onclick="nextStep(1)">← Back</button>
+        <button class="btn-auth" onclick="nextStep(3)">Review Order →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Confirm -->
+    <div class="checkout-step hidden" id="step3">
+      <h3>Review & Confirm Order</h3>
+      <div id="orderReview">
+        <!-- Injected by JS -->
+      </div>
+      <div class="step-btns">
+        <button class="btn-secondary-sm" onclick="nextStep(2)">← Back</button>
+        <button class="btn-auth place-order-btn" onclick="placeOrder()">🎉 Place Order</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none; padding: 2rem 0 1rem;">
+      <p>© 2026 Elegance by Design. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="js/data.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/cartpage.js"></script>
+</body>
+</html>
